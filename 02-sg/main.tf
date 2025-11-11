@@ -59,7 +59,7 @@ module "vpn" {
     inbound_rules  = var.vpn_sg_rules
 }
 
-## DB accepting connections from Backend & Bastion
+## DB accepting connections from Backend, VPN & Bastion
 resource "aws_security_group_rule" "db_backend" {
   type              = "ingress"
   from_port         = 3306
@@ -86,7 +86,7 @@ resource "aws_security_group_rule" "db_vpn" {
 }
 
 
-## Backend accepting connections from app_alb , Bastion
+## Backend accepting connections from app_alb , Bastion & VPN (SSH & HTTP)
 resource "aws_security_group_rule" "backend_app_alb" {
   type              = "ingress"
   from_port         = 8080
