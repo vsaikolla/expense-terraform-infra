@@ -1,3 +1,6 @@
 #/bin/bash
-dnf install ansible -y
+component= $1
+environment= $2
+sudo dnf install ansible -y
 pip3.9 install botocore boto3
+ansible-pull -i localhost, -U https://github.com/vsaikolla/ansible-expense-roles-tf-infra.git main.yaml -e component=$component -e env=$environment
