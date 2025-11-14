@@ -35,8 +35,8 @@ resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.web_alb.arn
   port = "443"
 
-  protocol          = "tls"
-  certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+  protocol          = "HTTPS"
+  certificate_arn   = data.aws_ssm_parameter.acm_certificate_arn.value
   alpn_policy       = "HTTP2Preferred"
 
   default_action {
