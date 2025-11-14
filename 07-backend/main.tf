@@ -117,6 +117,7 @@ resource "aws_autoscaling_group" "backend" {
   health_check_grace_period = 60
   health_check_type         = "ELB"
   desired_capacity          = 1
+  target_group_arns = [aws_lb_target_group.backend.arn]
   launch_template {
     id = aws_launch_template.backend.id
     version = "$Latest"
