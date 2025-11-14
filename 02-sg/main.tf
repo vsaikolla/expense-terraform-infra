@@ -48,6 +48,16 @@ module "app_alb" {
     sg_name = "app_alb"
 }
 
+module "web_alb" {
+    source  = "../../terraform-aws-sg"
+    project_name = var.project_name
+    environment = var.environment
+    sg_description = "SG For WEB ALB Instances"
+    vpc_id = data.aws_ssm_parameter.vpc_id.value
+    common_tags = var.common_tags
+    sg_name = "web_alb"
+}
+
 module "vpn" {
     source  = "../../terraform-aws-sg"
     project_name = var.project_name

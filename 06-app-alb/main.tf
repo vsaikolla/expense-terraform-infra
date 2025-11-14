@@ -33,7 +33,7 @@ resource "aws_lb_listener" "http" {
 
 resource "aws_route53_record" "alb" {
   zone_id = "Z0775134HZ7F8RJMR6R6"
-  name    = "*.app-${var.environment}"
+  name    = "*.app-${var.environment}.${var.zone_name}"
   type    = "A"
 
   alias {

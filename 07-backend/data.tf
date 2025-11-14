@@ -10,6 +10,9 @@ data "aws_ssm_parameter" "vpc_id" {
     name = "/${var.project_name}/${var.environment}/vpc_id"
 }
 
+data "aws_ssm_parameter" "aws_alb_listener_arn" {
+    name = "/${var.project_name}/${var.environment}/aws_alb_listener_arn"
+}
 
 data "aws_ami" "ami_info" {
     most_recent = true
