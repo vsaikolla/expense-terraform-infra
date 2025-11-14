@@ -10,7 +10,6 @@ terraform {
         key = "expense-dev-app-alb"
         region = "us-east-1"
         dynamodb_table = "sainath-locking"
-    
   }
 }
 
