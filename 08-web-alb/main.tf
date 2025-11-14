@@ -34,11 +34,16 @@ resource "aws_lb_listener" "http" {
 resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.web_alb.arn
   port = "443"
-  protocol = "HTTPS"
+
+  protocol          = "tls"
+  certificate_arn   = "arn:aws:iam::187416307283:server-certificate/test_cert_rab3wuqwgja25ct3n4jdj2tzu4"
+  alpn_policy       = "HTTP2Preferred"
 
   default_action {
     type = "fixed-response"
 
+
+    
     fixed_response {
       content_type = "text/html"
       message_body = "<h1>This is fixed response from APP ALB HTTPS</h1>"
