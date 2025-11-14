@@ -6,3 +6,6 @@ data "aws_ssm_parameter" "public_subnet_ids" {
     name = "/${var.project_name}/${var.environment}/public_subnet_ids"
 }
 
+data "aws_ssm_parameter" "web_alb_listener_arn_https" {
+    name = "/${var.project_name}/${var.environment}/web_alb_listener_arn_https"
+}
