@@ -31,6 +31,22 @@ resource "aws_lb_listener" "http" {
   }
 }
 
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.web_alb.arn
+  port = "443"
+  protocol = "HTTPS"
+
+  default_action {
+    type = "fixed-response"
+
+    fixed_response {
+      content_type = "text/html"
+      message_body = "<h1>This is fixed response from APP ALB HTTPS</h1>"
+      status_code = "200"
+    }
+  }
+}
+
 resource "aws_route53_record" "alb" {
   zone_id = "Z0775134HZ7F8RJMR6R6"
   name    = "web-${var.environment}.${var.zone_name}"
