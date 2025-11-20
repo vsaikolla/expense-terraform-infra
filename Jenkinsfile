@@ -30,6 +30,7 @@ pipeline {
     post{
         always{
             echo 'i will always say hello'
+            deleteDir()
         }
         success{
             echo 'i will run if build is success'
