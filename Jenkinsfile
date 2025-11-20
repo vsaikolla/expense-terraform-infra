@@ -27,7 +27,7 @@ pipeline {
     }
     post{
         always{
-            echo 'i will always say hello again'
+            echo 'i will always say hello'
         }
         success{
             echo 'i will run if build is success'
